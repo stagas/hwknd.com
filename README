@@ -1,0 +1,7 @@
+This is the source code for http://hwknd.com
+
+To setup recaptcha you need to add a file in the same directory as server.js,
+called rckeys.js which should export your recaptcha keys like this:
+
+exports.rcPublicKey = 'abcdabcdabcdabcdabcdabcdabcdabcdabcd'
+exports.rcPrivateKey = 'abcdabcdabcdabcdabcdabcdabcdabcdabcd'

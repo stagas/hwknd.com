@@ -1,0 +1,28 @@
+!!! 5
+html
+  head
+    link(rel: 'stylesheet', href: '/css/style.css')
+    title
+      | hwknd
+      - if (view != 'home')
+        - var v1 = view.substr(0,1).toUpperCase(), v2 = view.substr(1)
+        | - 
+        #{v1}#{v2}
+  body
+    #container
+      a(href: '/', title: 'Hacker WeeKeND')
+        h1 hwknd
+      != this.render(view, locals)
+      - if (view != 'home')
+        p#back
+          a(href:'/') return to home page      
+      #footer
+        ul
+          li
+            a(href:'/help') Help
+          li
+            a(href:'/about') About
+          li
+            a(href:'#', title:'Coming soon!') Source code
+          li
+            a(href:'http://stagas.com') Waste your time

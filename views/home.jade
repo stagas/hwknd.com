@@ -1,0 +1,10 @@
+p#intro
+  | Pick a project below to participate or
+  a(href: '/create')
+    span start yours now
+  | .
+#main
+  ul#repos
+    - each item in sorted
+      - if (typeof projects[item.name] !== 'undefined')
+        != this.render('partial', {name: item.name, repo: projects[item.name], owner: owner, contributors: contributors, languages: languages})

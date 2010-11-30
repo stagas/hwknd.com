@@ -1,0 +1,27 @@
+li
+  a(href: repo.url)
+    span= name.split('/')[1]
+  - if (repo.owner)
+    | 
+    span.by
+      | by
+      a(href: 'http://github.com/' + repo.owner)= repo.owner
+  - if (typeof owner[name] !== 'undefined')
+    a(href: 'http://github.com/' + repo.owner)
+      img.owner(src: 'http://www.gravatar.com/avatar/' + owner[name].gravatar_id + '?s=36&d=mm')
+    p.descr= repo.description || ''
+  - if (typeof contributors[name] !== 'undefined' && contributors[name].length)
+    ul.contribs
+      - contributors[name].forEach(function(user) {
+        li
+          a(href: 'http://github.com/' + user.login, title: (user.name || user.login))
+            img(src: 'http://www.gravatar.com/avatar/' + user.gravatar_id + '?s=24&d=mm')
+      - })
+  - if (typeof languages[name] !== 'undefined' && languages[name].length)
+    ul.langs
+      - var max = 0
+      - each lang in languages[name]
+        - if (lang.v >= max) max = lang.v
+      - each lang in languages[name]
+        li(style: 'width:' + ((lang.v / max) * 100) + '%;border-bottom:2px solid ' + this.hex(lang.k) )
+          span= lang.k

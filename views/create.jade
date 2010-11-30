@@ -1,0 +1,25 @@
+p#intro
+  | Instructions
+#main
+  - if (typeof error !== 'undefined')
+    p.error= error
+  ol
+    li 
+      span
+        | Create a new repository at 
+      a(href: 'http://github.com/repositories/new', target: '_blank')
+        span github.com
+      span
+        | .
+    li Fill out this form:
+  form(method: 'post', action: '/create')
+    div
+      label(for: 'user') github username:
+      input(name: 'user', type: 'text')
+    div
+      label(for: 'repo') repository name:
+      input(name: 'repo', type: 'text')
+    div#recaptcha
+      != recaptcha
+    div#submit
+      input(type: 'submit')
